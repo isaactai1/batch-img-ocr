@@ -1,0 +1,11 @@
+#drop-area {
+    background: #f8f9fa;
+    cursor: pointer;
+    color: #ccc;
+    border: 2px dashed #ccc;
+}
+
+#drop-area.hover {
+    color: #333;
+    border-color: #666;
+}
