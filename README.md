@@ -31,5 +31,3 @@ To run the Image OCR Tool locally, simply follow these steps:
 ## Contributions
 Contributions are welcome. Please create a fork of the repository and submit a pull request with your proposed changes.
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
