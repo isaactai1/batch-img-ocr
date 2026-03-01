@@ -1,35 +1,71 @@
-# Image OCR Tool
+# Batch Image OCR
 
-## Overview
-The Image OCR Tool is designed to extract text from uploaded images using Optical Character Recognition (OCR) technology. This web-based application supports multiple languages and provides a user-friendly interface for uploading images, monitoring processing progress, and exporting extracted text in CSV format.
+Browser-based tool for extracting text from multiple images at once. Upload a batch of images, run OCR in the browser, and export results as CSV.
 
-## Features
-- **Multiple Language Support**: Extract text from images in various languages including English, Traditional Chinese, Simplified Chinese, Japanese, and Korean.
-- **Drag and Drop Interface**: Conveniently upload images using a drag-and-drop interface or by selecting files from the local system.
-- **Real-Time Progress Updates**: Monitor the progress of text extraction with a dynamic progress bar.
-- **CSV Export**: Download the extracted text for each image in CSV format.
+## What it does
 
-## Installation
-To run the Image OCR Tool locally, simply follow these steps:
-1. Download the repository files or clone the repository to your local machine.
-2. Open the `index.html` file in a web browser.
+- Batch OCR on many images in one run
+- Multi-language recognition (English, Traditional/Simplified Chinese, Japanese, Korean)
+- Drag-and-drop or file picker upload
+- Progress bar and per-file status while processing
+- Results table with CSV download (UTF-8 with BOM)
 
-## Usage
-1. Launch the tool by opening the `index.html` file in any modern web browser.
-2. Choose the languages from which text should be extracted using the checkboxes provided.
-3. Upload images either by dragging and dropping into the specified area or by using the file selector.
-4. Click 'Process Images' to start the OCR process.
-5. Once processing is complete, you can download the results as a CSV file.
+## Quick start
 
-## Technologies Used
-- **HTML/CSS/JavaScript** for frontend development.
-- **Bootstrap** for responsive design.
-- **jQuery** for DOM manipulation and AJAX.
-- **Tesseract.js** for performing OCR.
-- **DataTables** to display results in a table format that supports downloading as CSV.
+No build step required.
 
-## Contributions
-Contributions are welcome. Please create a fork of the repository and submit a pull request with your proposed changes.
+1. Clone or download this repository.
+2. Open `index.html` in a modern browser (Chrome, Edge, or Firefox recommended).
+3. Select one or more OCR languages.
+4. Upload images (drag-and-drop or file input).
+5. Click **Process Images**.
+6. Download results via **Download CSV** when finished.
 
+## Supported languages
 
-Random maintenance note: f2ce1e09
+| Language            | Tesseract code |
+| ------------------- | -------------- |
+| English             | `eng`          |
+| Traditional Chinese | `chi_tra`      |
+| Simplified Chinese  | `chi_sim`      |
+| Japanese            | `jpn`          |
+| Korean              | `kor`          |
+
+You can select multiple languages; accuracy may vary when mixing languages on the same image.
+
+## How it works
+
+Processing runs entirely in the browser via [Tesseract.js](https://github.com/naptha/tesseract.js). Images are not uploaded to a server.
+
+1. Selected files are queued locally.
+2. Each image is passed to Tesseract with your chosen language pack(s).
+3. Extracted text and filenames are shown in a DataTable.
+4. CSV export includes a UTF-8 BOM for correct display in Excel.
+
+## Tech stack
+
+- HTML / CSS / JavaScript
+- [Bootstrap 5](https://getbootstrap.com/) — layout and UI
+- [jQuery](https://jquery.com/) — DOM and events
+- [Tesseract.js](https://github.com/naptha/tesseract.js) — OCR engine
+- [DataTables](https://datatables.net/) — results table and CSV export
+
+## Project structure
+
+```
+batch-img-ocr/
+├── index.html   # UI
+├── script.js    # OCR logic and table handling
+├── style.css    # Custom styles
+└── README.md
+```
+
+## Tips
+
+- Use clear, high-contrast images for better accuracy.
+- For mixed-language documents, try a single language first, then refine.
+- First run may be slower while language data loads in the browser.
+
+## License
+
+Use and modify as needed for personal or educational projects.
